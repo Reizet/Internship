@@ -1,0 +1,104 @@
+﻿<Window x:Class="BudgetTracker.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Звіти"
+        Height="650"
+        Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F4F6">
+
+    <Window.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="White"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                Padding="18"
+                Margin="0 0 0 15">
+
+            <StackPanel>
+                <TextBlock Text="Звіт по бюджету"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="#111827"/>
+
+                
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Background="White"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                Padding="15"
+                Margin="0 0 0 15">
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0 0 15 0">
+                    <TextBlock Text="Період" FontSize="13" Foreground="#374151"/>
+                    <ComboBox x:Name="PeriodComboBox"
+                              Width="150"
+                              SelectionChanged="ReportParameter_Changed">
+                        <ComboBoxItem Content="За місяць"/>
+                        <ComboBoxItem Content="За пів року"/>
+                        <ComboBoxItem Content="За рік"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="0 0 15 0">
+                    <TextBlock Text="Тип операції" FontSize="13" Foreground="#374151"/>
+                    <ComboBox x:Name="TypeComboBox"
+                              Width="130"
+                              SelectionChanged="ReportParameter_Changed">
+                        <ComboBoxItem Content="Витрата"/>
+                        <ComboBoxItem Content="Дохід"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Категорія" FontSize="13" Foreground="#374151"/>
+                    <ComboBox x:Name="CategoryComboBox"
+                              Width="220"
+                              SelectionChanged="ReportParameter_Changed"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                Padding="15">
+
+            <Canvas x:Name="ChartCanvas"
+                    Background="#FAFAFA"/>
+        </Border>
+
+        <Border Grid.Row="3"
+                Background="White"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                Padding="12"
+                Margin="0 15 0 0">
+
+            <TextBlock x:Name="SummaryTextBlock"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="#111827"/>
+        </Border>
+    </Grid>
+</Window>
